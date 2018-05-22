@@ -1,33 +1,39 @@
 version: 2
 
 jobs:
-  job1:
+  greetings:
     machine: true
     environment:
       FOO: BAR
     steps:
-      - checkout
       - run:
-          name: Output
-          command: |
-            echo "This is output prom job1"
-  build:
+          name: Greeting
+          command: echo Hello, world. Foo: $FOO
+  date:
     docker:
       - image: buildpack-deps:trusty
     steps:
       - checkout
       - run:
-          name: Greeting
-          command: echo Hello, world.
-      - run:
           name: Print the Current Time
           command: date
 
+  repo_size:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Echo repo size
+          command: du -sh
+
 workflows:
   version: 2
-  run_job1:
+  run_date
     jobs:
-      - job1
-  run_build:
+      - greetings
+      - date
+  run_repo_size:
     jobs:
-      - build
+      - greetings
+      - repo_size
