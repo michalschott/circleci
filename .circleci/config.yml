@@ -22,3 +22,12 @@ jobs:
       - run:
           name: Print the Current Time
           command: date
+
+workflows:
+  version: 2
+  run_job1:
+    jobs:
+      - job1
+  run_build:
+    jobs:
+      - build
