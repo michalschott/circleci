@@ -43,3 +43,12 @@ workflows:
       - repo_size:
           requires:
             - greetings
+  run_all_jobs:
+    jobs:
+      - greetings
+      - date:
+          requires:
+            - greetings
+      - repo_size:
+          requires:
+            - greetings
