@@ -33,7 +33,8 @@ workflows:
   version: 2
   run_date:
     jobs:
-      - greetings
+      - greetings:
+          type: approval
       - date:
           requires:
             - greetings
@@ -45,7 +46,8 @@ workflows:
             - greetings
   run_all_jobs:
     jobs:
-      - greetings
+      - greetings:
+          type: approval
       - date:
           requires:
             - greetings
