@@ -8,7 +8,9 @@ jobs:
     steps:
       - run:
           name: Greeting
-          command: echo Hello, world. Foo: $FOO
+          command: |
+            echo Hello, world.
+            echo Foo: $FOO
   date:
     docker:
       - image: buildpack-deps:trusty
