@@ -40,7 +40,8 @@ workflows:
             - greetings
   run_repo_size:
     jobs:
-      - greetings
+      - greetings:
+          type: approval
       - repo_size:
           requires:
             - greetings
