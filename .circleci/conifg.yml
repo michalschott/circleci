@@ -1,0 +1,22 @@
+version: 2
+
+jobs:
+  job1:
+    machine: true
+    environment:
+      FOO: BAR
+    steps:
+      - checkout
+      - run:
+          name: Output
+          command: |
+            echo "This is output prom job1"
+  build:
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: Output
+          command: |
+            echo "This is output prom job1"
