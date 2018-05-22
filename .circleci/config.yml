@@ -34,8 +34,12 @@ workflows:
   run_date:
     jobs:
       - greetings
-      - date
+      - date:
+          requires:
+            - greetings
   run_repo_size:
     jobs:
       - greetings
-      - repo_size
+      - repo_size:
+          requires:
+            - greetings
